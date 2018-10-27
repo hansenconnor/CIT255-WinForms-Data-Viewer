@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_WinForms_FlintstonesViewer.Solution", "Demo_WinForms_FlintstonesViewer.Solution\Demo_WinForms_FlintstonesViewer.Solution.csproj", "{BA5957AE-7D6F-47B9-8553-CE3D37C96FE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo_WinForms_FlintstonesViewer.Starter", "Demo_WinForms_FlintstonesViewer.Starter\Demo_WinForms_FlintstonesViewer.Starter.csproj", "{3360724E-9768-4546-BF4E-C76A16C817B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA5957AE-7D6F-47B9-8553-CE3D37C96FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA5957AE-7D6F-47B9-8553-CE3D37C96FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA5957AE-7D6F-47B9-8553-CE3D37C96FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA5957AE-7D6F-47B9-8553-CE3D37C96FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3360724E-9768-4546-BF4E-C76A16C817B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3360724E-9768-4546-BF4E-C76A16C817B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3360724E-9768-4546-BF4E-C76A16C817B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3360724E-9768-4546-BF4E-C76A16C817B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C926D830-F08D-438A-B63E-98FBB9492F6A}
+	EndGlobalSection
+EndGlobal
