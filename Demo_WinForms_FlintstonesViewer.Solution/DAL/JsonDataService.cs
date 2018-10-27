@@ -50,8 +50,7 @@ namespace Demo_WinForms_FlintstonesViewer
                 html = reader.ReadToEnd();
             }
             Console.WriteLine(html);
-            // TODO: Add JSON deserializer here => GET request returns a JSON object which needs to be parsed.
-
+            // TODO: Add JSON deserializer here => GET request returns a JSON object which needs to be parsed
 
             // TODO: Wrap the GET request inside of try catch
 

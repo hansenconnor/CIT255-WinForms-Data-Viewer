@@ -63,14 +63,16 @@ namespace Demo_WinForms_FlintstonesViewer
 
 
             //
-            // read data file
+            // Create new json data service and pass the base url for API requests
             //
             // IDataService dataService = new XmlDataService(dataFilePath); // TODO: Use Json service here 
             IDataService dataService = new JsonDataService(apiGetPath);
 
 
+            // GET request to the user endpoint => format JSON response => return as MediumUser List
             // Set _characters (_users) to a list of users returned from the API call
             // TODO: Replace _characters with _users or _mediumUsers
+
             _mediumUsers = dataService.ReadAll(); // Update data bindings to correctly map the character class
                                                  // Also, can modify ReadAll to accept an object type
                                                  // to conditionally handle field mapping.
