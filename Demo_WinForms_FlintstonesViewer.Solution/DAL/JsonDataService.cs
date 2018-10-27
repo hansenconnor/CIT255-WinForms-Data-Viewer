@@ -35,9 +35,12 @@ namespace Demo_WinForms_FlintstonesViewer
             // Make the GET request
             //
             string html = string.Empty;
-            string url = @"https://api.stackexchange.com/2.2/answers?order=desc&sort=activity&site=stackoverflow";
+            string url = _apiBaseUrl; // => https://api.medium.com/v1/me
 
+            // Create request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            // Pass the access token 
+            request.Headers["Authorization"] = accessToken;
             request.AutomaticDecompression = DecompressionMethods.GZip;
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
