@@ -13,40 +13,43 @@ namespace Demo_WinForms_FlintstonesViewer
 {
     public partial class ListForm : Form
     {
-        private List<Character> _characters;
+
+        private List<MediumUser> _mediumUsers;
 
         public ListForm()
         {
             InitializeComponent();
         }
 
-        private void ReadXmlFileAndBindToDataGrid()
-        {
 
-            string dataFilePath = AppConfig.dataFilePath; // TODO: Replace this with my client ID and Token
+        // NOTE: This method is not used => replaced by APICallAndBindToDataGrid();
+        //private void ReadXmlFileAndBindToDataGrid()
+        //{
 
-            //
-            // read data file
-            //
-            IDataService dataService = new XmlDataService(dataFilePath); // TODO: Use Json service here 
-            _characters = dataService.ReadAll(); // Update data bindings to correctly map the character class
-                                                 // Also, can modify ReadAll to accept an object type
-                                                 // to conditionally handle field mapping.
+        //    string dataFilePath = AppConfig.dataFilePath; // TODO: Replace this with my client ID and Token
 
-            //
-            // bind list to DataGridView control asdf
-            //
-            var bindingList = new BindingList<Character>(_characters);
-            var source = new BindingSource(bindingList, null);
-            dataGridView_Characters.DataSource = source;
+        //    //
+        //    // read data file
+        //    //
+        //    // IDataService dataService = new XmlDataService(dataFilePath); // TODO: Use Json service here 
+        //    // _characters = dataService.ReadAll(); // Update data bindings to correctly map the character class
+        //                                         // Also, can modify ReadAll to accept an object type
+        //                                         // to conditionally handle field mapping.
 
-            //
-            // configure DataGridView control
-            //
-            this.dataGridView_Characters.Columns["Id"].Visible = false;
-            this.dataGridView_Characters.Columns["ImageFileName"].Visible = false;
-            this.dataGridView_Characters.Columns["Description"].Visible = false;
-        }
+        //    //
+        //    // bind list to DataGridView control asdf
+        //    //
+        //    var bindingList = new BindingList<Character>(_characters);
+        //    var source = new BindingSource(bindingList, null);
+        //    dataGridView_Characters.DataSource = source;
+
+        //    //
+        //    // configure DataGridView control
+        //    //
+        //    this.dataGridView_Characters.Columns["Id"].Visible = false;
+        //    this.dataGridView_Characters.Columns["ImageFileName"].Visible = false;
+        //    this.dataGridView_Characters.Columns["Description"].Visible = false;
+        //}
 
 
 
@@ -55,9 +58,6 @@ namespace Demo_WinForms_FlintstonesViewer
         /// </summary>
         private void APICallAndBindToDataGrid()
         {
-            //string dataFilePath = AppConfig.dataFilePath; // TODO: Replace this with the URL for GET request
-
-
             // Get URL for GET request
             string apiGetPath = AppConfig.apiGetUserPath;
 
@@ -65,16 +65,23 @@ namespace Demo_WinForms_FlintstonesViewer
             //
             // read data file
             //
-            IDataService dataService = new XmlDataService(dataFilePath); // TODO: Use Json service here 
-            _characters = dataService.ReadAll(); // Update data bindings to correctly map the character class
+            // IDataService dataService = new XmlDataService(dataFilePath); // TODO: Use Json service here 
+            IDataService dataService = new JsonDataService(apiGetPath);
+
+
+            // Set _characters (_users) to a list of users returned from the API call
+            // TODO: Replace _characters with _users or _mediumUsers
+            _mediumUsers = dataService.ReadAll(); // Update data bindings to correctly map the character class
                                                  // Also, can modify ReadAll to accept an object type
                                                  // to conditionally handle field mapping.
 
             //
             // bind list to DataGridView control
             //
-            var bindingList = new BindingList<Character>(_characters);
+            var bindingList = new BindingList<MediumUser>(_mediumUsers);
             var source = new BindingSource(bindingList, null);
+
+            // TODO:  Possibly rename control name attribute to mach new Data Access schema
             dataGridView_Characters.DataSource = source;
 
             //
@@ -94,7 +101,8 @@ namespace Demo_WinForms_FlintstonesViewer
                 // This is where my API call will go...
                 // APICallAndBindToDataGrid();
 
-                ReadXmlFileAndBindToDataGrid();
+                // ReadXmlFileAndBindToDataGrid(); => Legacy
+                APICallAndBindToDataGrid();
             }
             catch (FileNotFoundException)
             {
@@ -125,49 +133,71 @@ namespace Demo_WinForms_FlintstonesViewer
             }
         }
 
+
+        //
+        // TODO => Enable writing to json?? Can store in mongo for full credit..
+        //
+
+        //private void btn_exit_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // TODO: Write to JSON file instead => match format returned by API
+        //        IDataService XmlDataService = new XmlDataService(AppConfig.dataFilePath);
+        //        XmlDataService.WriteAll(_characters);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Unable to save current data.\nExiting the application.");
+        //        throw;
+        //    }
+        //    this.Close();
+
+        //}
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                IDataService XmlDataService = new XmlDataService(AppConfig.dataFilePath);
-                XmlDataService.WriteAll(_characters);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unable to save current data.\nExiting the application.");
-                throw;
-            }
-            this.Close();
-
+            return;
         }
 
+
+
+        //
+        // TODO => Enable sorting
+        //
+
+        //private void btn_DemoSortFilterSearch_Click(object sender, EventArgs e)
+        //{
+        //    //
+        //    // Note: These examples represent a quick way to "refresh" the DataGridView.
+        //    //       Using an ObservableCollection and implementing the INotifyPropertyChanged interface
+        //    //       is a stronger pattern.
+        //    //
+
+        //    //
+        //    // sort list by age and reset the DataSource
+        //    // TODO: Update to sort by _mediumUser values
+        //    var sortedList = _characters.OrderBy(c => c.Age).ToList();
+        //    dataGridView_Characters.DataSource = sortedList;
+
+        //    //
+        //    // filter list by gender and reset the DataSource
+        //    //
+        //    //var filteredList = _characters.Where(c => c.Gender == Character.GenderType.Male).ToList();
+        //    //dataGridView_Characters.DataSource = filteredList;
+
+        //    //
+        //    // search list and reset the DataSource
+        //    // note: searchTerm and LastName are converted to upper case for comparison
+        //    //
+        //    //string searchTerm = "Rubble";
+        //    //var searchedList = _characters.Where(c => c.LastName.ToUpper().Contains(searchTerm.ToUpper())).ToList();
+        //    //dataGridView_Characters.DataSource = searchedList;
+        //}
         private void btn_DemoSortFilterSearch_Click(object sender, EventArgs e)
         {
-            //
-            // Note: These examples represent a quick way to "refresh" the DataGridView.
-            //       Using an ObservableCollection and implementing the INotifyPropertyChanged interface
-            //       is a stronger pattern.
-            //
-
-            //
-            // sort list by age and reset the DataSource
-            //
-            var sortedList = _characters.OrderBy(c => c.Age).ToList();
-            dataGridView_Characters.DataSource = sortedList;
-
-            //
-            // filter list by gender and reset the DataSource
-            //
-            //var filteredList = _characters.Where(c => c.Gender == Character.GenderType.Male).ToList();
-            //dataGridView_Characters.DataSource = filteredList;
-
-            //
-            // search list and reset the DataSource
-            // note: searchTerm and LastName are converted to upper case for comparison
-            //
-            //string searchTerm = "Rubble";
-            //var searchedList = _characters.Where(c => c.LastName.ToUpper().Contains(searchTerm.ToUpper())).ToList();
-            //dataGridView_Characters.DataSource = searchedList;
+            return;
         }
+
+
     }
 }

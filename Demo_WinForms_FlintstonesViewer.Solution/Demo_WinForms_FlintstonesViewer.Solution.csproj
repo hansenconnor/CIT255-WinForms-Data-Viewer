@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="DAL\IDataService.cs" />
     <Compile Include="DAL\JsonDataService.cs" />
-    <Compile Include="DAL\XmlDataService.cs" />
+    <None Include="DAL\XmlDataService.cs" />
     <Compile Include="Data\AppConfig.cs" />
     <Compile Include="DetailForm.cs">
       <SubType>Form</SubType>

@@ -9,8 +9,9 @@ using System.IO;
 namespace Demo_WinForms_FlintstonesViewer
 
 {
-    public class XmlDataService : IDataService
+    public abstract class XmlDataService : IDataService
     {
+
         private string _dataFilePath;
 
         /// <summary>

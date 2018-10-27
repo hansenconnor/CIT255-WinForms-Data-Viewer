@@ -11,27 +11,25 @@ using System.Configuration;
 namespace Demo_WinForms_FlintstonesViewer
 
 {
-    public abstract class JsonDataService : IDataService
+    public class JsonDataService : IDataService
     {
-        // Abstraction - We don't need the ReadAll method here as we are using GetUsers() instead.
-        public abstract List<Character> ReadAll();
 
-        private string _dataFilePath;
+        private string _apiBaseUrl;
 
         /// <summary>
         /// read the json response and load a list of user objects
         /// </summary>
         /// <returns>list of users</returns>
-        public List<MediumUser> GetUsers()
+        public List<MediumUser> ReadAll()
         {
             List<MediumUser> users = new List<MediumUser>();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<MediumUser>), new XmlRootAttribute("Characters")); // Probably remove this??
+            // XmlSerializer serializer = new XmlSerializer(typeof(List<MediumUser>), new XmlRootAttribute("Characters")); // Probably remove this??
 
 
-            // Get header info for request
-            string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
+            // Get authorization token for use in request header
+            var accessToken = System.Configuration.ConfigurationManager.AppSettings["Authorization"];
+            //string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
 
-            var value = System.Configuration.ConfigurationManager.AppSettings["key"];
 
             //
             // Make the GET request
@@ -52,20 +50,25 @@ namespace Demo_WinForms_FlintstonesViewer
             // TODO: Add JSON deserializer here => GET request returns a JSON object which needs to be parsed.
 
 
-            
-            try
-            {
-                StreamReader reader = new StreamReader(_dataFilePath);
-                using (reader)
-                {
-                    users = (List<MediumUser>)serializer.Deserialize(reader);
-                }
+            // TODO: Wrap the GET request inside of try catch
 
-            }
-            catch (Exception)
-            {
-                throw; // all exceptions are handled in the ListForm class
-            }
+            // TODO: Parse JSON and return list of Users or Publications
+
+
+            
+            //try
+            //{
+            //    StreamReader reader = new StreamReader(_dataFilePath);
+            //    using (reader)
+            //    {
+            //        users = (List<MediumUser>)serializer.Deserialize(reader);
+            //    }
+
+            //}
+            //catch (Exception)
+            //{
+            //    throw; // all exceptions are handled in the ListForm class
+            //}
 
             return users;
         }
@@ -77,27 +80,28 @@ namespace Demo_WinForms_FlintstonesViewer
 
 
         /// <summary>
-        /// write the current list of characters to the xml data file
+        /// write the current list of characters to the json data file
         /// </summary>
-        /// <param name="characters">list of characters</param>
-        public void WriteAll(List<Character> characters)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Character>), new XmlRootAttribute("Characters"));
+        /// <param name="characters">list of users</param>
+        //public void WriteAll(List<MediumUser> characters)
+        //{
+        //    // TODO: Replace with JSON serialization.
+        //    XmlSerializer serializer = new XmlSerializer(typeof(List<Character>), new XmlRootAttribute("Characters"));
 
-            try
-            {
-                StreamWriter writer = new StreamWriter(_dataFilePath);
-                using (writer)
-                {
-                    serializer.Serialize(writer, characters);
-                }
-            }
-            catch (Exception)
-            {
+        //    try
+        //    {
+        //        StreamWriter writer = new StreamWriter(_dataFilePath);
+        //        using (writer)
+        //        {
+        //            serializer.Serialize(writer, characters);
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
         public JsonDataService()
         {
@@ -108,9 +112,9 @@ namespace Demo_WinForms_FlintstonesViewer
         //
         // Constructor
         //
-        public JsonDataService(string datafile)
+        public JsonDataService(string apiPath)
         {
-            _dataFilePath = datafile;
+            _apiBaseUrl = apiPath;
         }
     }
 }
