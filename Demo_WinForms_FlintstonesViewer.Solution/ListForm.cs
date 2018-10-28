@@ -239,10 +239,34 @@ namespace Demo_WinForms_FlintstonesViewer
             //dataGridView1.DataSource = dt;
         }
 
+
+        //
+        // Handle list filtering on button click
+        //
         private void buttonFilterName_Click(object sender, EventArgs e)
         {
             var filteredList = _mediumUsers.Where(p => p.name == "NMC CIT 255").ToList();
             dataGridView_Characters.DataSource = filteredList;
+        }
+
+        //
+        // Handle list sorting on button click
+        //
+        private void buttonSortByName_Click(object sender, EventArgs e)
+        {
+            var sortedList = _mediumUsers.OrderBy(p => p.name).ToList();
+            dataGridView_Characters.DataSource = sortedList;
+        }
+
+        //
+        // Handle search on button click
+        //
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            var searchQuery = textBoxSearch.Text;
+
+            var searchedList = _mediumUsers.Where(p => p.name.ToUpper().Contains(searchQuery.ToUpper())).ToList();
+            dataGridView_Characters.DataSource = searchedList;
         }
 
 

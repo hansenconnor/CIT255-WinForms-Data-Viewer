@@ -35,6 +35,9 @@
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_DemoSortFilterSearch = new System.Windows.Forms.Button();
             this.buttonFilterName = new System.Windows.Forms.Button();
+            this.buttonSortByName = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Characters)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,11 +116,41 @@
             this.buttonFilterName.UseVisualStyleBackColor = true;
             this.buttonFilterName.Click += new System.EventHandler(this.buttonFilterName_Click);
             // 
+            // buttonSortByName
+            // 
+            this.buttonSortByName.Location = new System.Drawing.Point(157, 86);
+            this.buttonSortByName.Name = "buttonSortByName";
+            this.buttonSortByName.Size = new System.Drawing.Size(81, 23);
+            this.buttonSortByName.TabIndex = 7;
+            this.buttonSortByName.Text = "Sort by Name";
+            this.buttonSortByName.UseVisualStyleBackColor = true;
+            this.buttonSortByName.Click += new System.EventHandler(this.buttonSortByName_Click);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(454, 86);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 8;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(276, 88);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(172, 20);
+            this.textBoxSearch.TabIndex = 9;
+            // 
             // ListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 439);
+            this.Controls.Add(this.textBoxSearch);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.buttonSortByName);
             this.Controls.Add(this.buttonFilterName);
             this.Controls.Add(this.btn_DemoSortFilterSearch);
             this.Controls.Add(this.btn_exit);
@@ -144,6 +177,9 @@
         private System.Windows.Forms.Button btn_exit;
         private System.Windows.Forms.Button btn_DemoSortFilterSearch;
         private System.Windows.Forms.Button buttonFilterName;
+        private System.Windows.Forms.Button buttonSortByName;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.TextBox textBoxSearch;
     }
 }
 
