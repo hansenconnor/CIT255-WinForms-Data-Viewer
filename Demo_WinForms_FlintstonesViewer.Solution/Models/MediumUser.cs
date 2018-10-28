@@ -8,7 +8,7 @@ namespace Demo_WinForms_FlintstonesViewer
 {
     public class MediumUser
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string username { get; set; }
         public string name { get; set; }
         public string profileUrl { get; set; }

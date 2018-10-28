@@ -40,12 +40,6 @@ namespace Demo_WinForms_FlintstonesViewer
             string html = string.Empty;
             string url = _apiBaseUrl; // => https://api.medium.com/v1/me
 
-
-            //WebClient webClient = new WebClient();
-            //JObject result = JObject.Parse(webClient.DownloadString("YOUR URL"));
-            //reader = new JsonTextReader(new System.IO.StringReader(result.ToString()));
-            //reader.SupportMultipleContent = true;
-
             // Create request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             // Pass the access token 
@@ -59,20 +53,49 @@ namespace Demo_WinForms_FlintstonesViewer
                 html = reader.ReadToEnd();
             }
             Console.WriteLine(html);
-            var userId = Convert.ToInt32(JObject.Parse(html)["data"]["id"]);
+
+            // Grab the values from the JSON string
+            var userId = JObject.Parse(html)["data"]["id"].ToString();
+            var userName = JObject.Parse(html)["data"]["name"].ToString();
+            var userUsername = JObject.Parse(html)["data"]["username"].ToString();
+            var userProfileImageUrl = JObject.Parse(html)["data"]["imageUrl"].ToString();
+            var userProfileUrl = JObject.Parse(html)["data"]["url"].ToString();
 
             MediumUser mediumUser = new MediumUser()
             {
                 Id = userId,
-                name = result.name,
-                username = result.username,
-               profileImageUrl = result.profileImageUrl,
-                profileUrl = result.profileUrl
+                name = userName,
+                username = userUsername,
+                profileImageUrl = userProfileImageUrl,
+                profileUrl = userProfileUrl
             };
 
-            mediumUser.Id = result.id;
 
-            Console.WriteLine(result);
+            //
+            // Make another call to retrieve a listof user publications
+            //
+            userId = userId.Replace("\"", "");
+            string publicationUrl = "https://api.medium.com/v1/users/" + userId + "/publications";
+            // Create request
+            request = (HttpWebRequest)WebRequest.Create(publicationUrl);
+            // Pass the access token 
+            request.Headers["Authorization"] = accessToken;
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+            }
+            Console.WriteLine(html);
+            Console.WriteLine(mediumUser.Id);
+
+
+
+
+
+
             // we are going to return a list even though we are only querying one user.. But the user has multiple publications to list
 
             // TODO: Add JSON deserializer here => GET request returns a JSON object which needs to be parsed
