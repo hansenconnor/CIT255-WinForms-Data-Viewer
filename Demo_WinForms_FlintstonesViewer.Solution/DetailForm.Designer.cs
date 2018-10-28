@@ -39,9 +39,10 @@
             // 
             // picBox_Photo
             // 
-            this.picBox_Photo.Location = new System.Drawing.Point(21, 61);
+            this.picBox_Photo.Location = new System.Drawing.Point(16, 50);
+            this.picBox_Photo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.picBox_Photo.Name = "picBox_Photo";
-            this.picBox_Photo.Size = new System.Drawing.Size(137, 110);
+            this.picBox_Photo.Size = new System.Drawing.Size(103, 89);
             this.picBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBox_Photo.TabIndex = 3;
             this.picBox_Photo.TabStop = false;
@@ -50,43 +51,48 @@
             // 
             this.lbl_FullName.AutoSize = true;
             this.lbl_FullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FullName.Location = new System.Drawing.Point(15, 9);
+            this.lbl_FullName.Location = new System.Drawing.Point(11, 7);
+            this.lbl_FullName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_FullName.Name = "lbl_FullName";
-            this.lbl_FullName.Size = new System.Drawing.Size(137, 31);
+            this.lbl_FullName.Size = new System.Drawing.Size(112, 26);
             this.lbl_FullName.TabIndex = 4;
             this.lbl_FullName.Text = "Full Name";
             // 
             // lbl_Age
             // 
             this.lbl_Age.AutoSize = true;
-            this.lbl_Age.Location = new System.Drawing.Point(242, 84);
+            this.lbl_Age.Location = new System.Drawing.Point(182, 68);
+            this.lbl_Age.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Age.Name = "lbl_Age";
-            this.lbl_Age.Size = new System.Drawing.Size(33, 17);
+            this.lbl_Age.Size = new System.Drawing.Size(26, 13);
             this.lbl_Age.TabIndex = 5;
             this.lbl_Age.Text = "Age";
             // 
             // lbl_Gender
             // 
             this.lbl_Gender.AutoSize = true;
-            this.lbl_Gender.Location = new System.Drawing.Point(242, 118);
+            this.lbl_Gender.Location = new System.Drawing.Point(182, 96);
+            this.lbl_Gender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Gender.Name = "lbl_Gender";
-            this.lbl_Gender.Size = new System.Drawing.Size(56, 17);
+            this.lbl_Gender.Size = new System.Drawing.Size(42, 13);
             this.lbl_Gender.TabIndex = 6;
             this.lbl_Gender.Text = "Gender";
             // 
             // lbl_Description
             // 
-            this.lbl_Description.Location = new System.Drawing.Point(26, 188);
+            this.lbl_Description.Location = new System.Drawing.Point(20, 153);
+            this.lbl_Description.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Description.Name = "lbl_Description";
-            this.lbl_Description.Size = new System.Drawing.Size(340, 112);
+            this.lbl_Description.Size = new System.Drawing.Size(255, 91);
             this.lbl_Description.TabIndex = 7;
             this.lbl_Description.Text = "Description";
             // 
             // btn_Close
             // 
-            this.btn_Close.Location = new System.Drawing.Point(157, 318);
+            this.btn_Close.Location = new System.Drawing.Point(118, 258);
+            this.btn_Close.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(75, 28);
+            this.btn_Close.Size = new System.Drawing.Size(56, 23);
             this.btn_Close.TabIndex = 8;
             this.btn_Close.Text = "Close";
             this.btn_Close.UseVisualStyleBackColor = true;
@@ -94,15 +100,16 @@
             // 
             // DetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 358);
+            this.ClientSize = new System.Drawing.Size(552, 291);
             this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.lbl_Description);
             this.Controls.Add(this.lbl_Gender);
             this.Controls.Add(this.lbl_Age);
             this.Controls.Add(this.lbl_FullName);
             this.Controls.Add(this.picBox_Photo);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DetailForm";
             this.Text = "DetailForm";
             this.TopMost = true;

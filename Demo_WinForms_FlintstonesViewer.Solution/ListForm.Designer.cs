@@ -80,9 +80,9 @@
             this.lbl_Title.Location = new System.Drawing.Point(61, 26);
             this.lbl_Title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(355, 29);
+            this.lbl_Title.Size = new System.Drawing.Size(237, 29);
             this.lbl_Title.TabIndex = 3;
-            this.lbl_Title.Text = "Characters from The Flintstones";
+            this.lbl_Title.Text = "Medium Publications";
             // 
             // btn_exit
             // 
@@ -160,7 +160,7 @@
             this.Controls.Add(this.dataGridView_Characters);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ListForm";
-            this.Text = "Cartoon Characters";
+            this.Text = "Publications";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Characters)).EndInit();
             this.ResumeLayout(false);

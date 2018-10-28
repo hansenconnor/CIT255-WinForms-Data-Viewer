@@ -173,6 +173,7 @@ namespace Demo_WinForms_FlintstonesViewer
         //}
         private void btn_exit_Click(object sender, EventArgs e)
         {
+            Application.Exit();
             return;
         }
 
