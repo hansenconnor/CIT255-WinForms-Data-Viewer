@@ -14,7 +14,7 @@ namespace Demo_WinForms_FlintstonesViewer
     public partial class ListForm : Form
     {
 
-        private List<MediumUser> _mediumUsers;
+        private List<MediumPublication> _mediumUsers;
 
         public ListForm()
         {
@@ -80,7 +80,7 @@ namespace Demo_WinForms_FlintstonesViewer
             //
             // bind list to DataGridView control
             //
-            var bindingList = new BindingList<MediumUser>(_mediumUsers);
+            var bindingList = new BindingList<MediumPublication>(_mediumUsers);
             var source = new BindingSource(bindingList, null);
 
             // TODO:  Possibly rename control name attribute to mach new Data Access schema
@@ -90,8 +90,10 @@ namespace Demo_WinForms_FlintstonesViewer
             // configure DataGridView control
             //
             this.dataGridView_Characters.Columns["Id"].Visible = false;
-            this.dataGridView_Characters.Columns["ImageFileName"].Visible = false;
-            this.dataGridView_Characters.Columns["Description"].Visible = false;
+            this.dataGridView_Characters.Columns["name"].Visible = false;
+            this.dataGridView_Characters.Columns["description"].Visible = false;
+            //this.dataGridView_Characters.Columns["url"].Visible = false;
+            //this.dataGridView_Characters.Columns["imageUrl"].Visible = false;
         }
 
 
@@ -123,17 +125,30 @@ namespace Demo_WinForms_FlintstonesViewer
             }
         }
 
+
         private void btn_DetailView_Click(object sender, EventArgs e)
         {
             if (dataGridView_Characters.SelectedRows.Count == 1)
             {
-                Character character = new Character();
-                character = (Character)dataGridView_Characters.CurrentRow.DataBoundItem;
+                MediumPublication publication = new MediumPublication();
+                publication = (MediumPublication)dataGridView_Characters.CurrentRow.DataBoundItem;
 
-                DetailForm detailForm = new DetailForm(character);
+                DetailForm detailForm = new DetailForm(publication);
                 detailForm.ShowDialog();
             }
         }
+
+        //private void btn_DetailView_Click(object sender, EventArgs e)
+        //{
+        //    if (dataGridView_Characters.SelectedRows.Count == 1)
+        //    {
+        //        Character character = new Character();
+        //        character = (Character)dataGridView_Characters.CurrentRow.DataBoundItem;
+
+        //        DetailForm detailForm = new DetailForm(character);
+        //        detailForm.ShowDialog();
+        //    }
+        //}
 
 
         //

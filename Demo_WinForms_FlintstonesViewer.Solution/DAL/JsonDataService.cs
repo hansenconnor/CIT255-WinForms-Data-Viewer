@@ -23,7 +23,7 @@ namespace Demo_WinForms_FlintstonesViewer
         /// read the json response and load a list of user objects
         /// </summary>
         /// <returns>list of users</returns>
-        public List<MediumUser> ReadAll()
+        public List<MediumPublication> ReadAll()
         {
             List<MediumUser> users = new List<MediumUser>();
             // XmlSerializer serializer = new XmlSerializer(typeof(List<MediumUser>), new XmlRootAttribute("Characters")); // Probably remove this??
@@ -139,7 +139,7 @@ namespace Demo_WinForms_FlintstonesViewer
             //    throw; // all exceptions are handled in the ListForm class
             //}
 
-            return users;
+            return MediumPublications;
         }
 
 

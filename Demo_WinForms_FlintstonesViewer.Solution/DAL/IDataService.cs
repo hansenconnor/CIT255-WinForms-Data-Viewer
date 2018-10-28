@@ -8,7 +8,7 @@ namespace Demo_WinForms_FlintstonesViewer
 {
     public interface IDataService
     {
-        List<MediumUser> ReadAll();
+        List<MediumPublication> ReadAll();
         //void WriteAll(List<MediumUser> characters);
     }
 }

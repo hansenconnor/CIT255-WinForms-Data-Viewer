@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Demo_WinForms_FlintstonesViewer
 {
-    class MediumPublication
+    public class MediumPublication
     {
         public string Id { get; set; }
         public string name { get; set; }
