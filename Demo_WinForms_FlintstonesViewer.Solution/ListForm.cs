@@ -216,5 +216,82 @@ namespace Demo_WinForms_FlintstonesViewer
         }
 
 
+        //
+        // Handle filtering
+        //
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+            //var bindingList = new BindingList<MediumPublication>(_mediumUsers);
+            //var source = new BindingSource(bindingList, null);
+
+            //// TODO:  Possibly rename control name attribute to mach new Data Access schema
+            //dataGridView_Characters.DataSource = source;
+
+            ////
+            //// configure DataGridView control
+            ////
+            //this.dataGridView_Characters.Columns["Id"].Visible = false;
+            //this.dataGridView_Characters.Columns["name"].Visible = false;
+            //this.dataGridView_Characters.Columns["description"].Visible = false;
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            //dataGridView1.DataSource = dt;
+        }
+
+        private void buttonFilterName_Click(object sender, EventArgs e)
+        {
+            var filteredList = _mediumUsers.Where(p => p.name == "NMC CIT 255").ToList();
+            dataGridView_Characters.DataSource = filteredList;
+        }
+
+
+
+
+
+
+
+
+        //private void btn_DemoSortFilterSearch_Click(object sender, EventArgs e)
+        //{
+
+        //    //
+        //    // Note: These examples represent a quick way to "refresh" the DataGridView.
+        //    //       Using an ObservableCollection and implementing the INotifyPropertyChanged interface
+        //    //       is a stronger pattern.
+        //    //
+
+        //    //
+        //    // sort list by age and reset the DataSource
+        //    //
+        //    var sortedList = _characters.OrderBy(c => c.Age).ToList();
+        //    dataGridView_Characters.DataSource = sortedList;
+
+        //    //
+        //    // filter list by gender and reset the DataSource
+        //    //
+        //    //var filteredList = _characters.Where(c => c.Gender == Character.GenderType.Male).ToList();
+        //    //dataGridView_Characters.DataSource = filteredList;
+
+        //    //
+        //    // search list and reset the DataSource
+        //    // note: searchTerm and LastName are converted to upper case for comparison
+        //    //
+        //    //string searchTerm = "Rubble";
+        //    //var searchedList = _characters.Where(c => c.LastName.ToUpper().Contains(searchTerm.ToUpper())).ToList();
+        //    //dataGridView_Characters.DataSource = searchedList;
+        //}
+
+
+
+        //public void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //    BindingSource bs = new BindingSource();
+        //    bs.DataSource = dataGridView1.DataSource;
+        //    bs.Filter = dataGridView1.Columns[5].HeaderText.ToString() + " LIKE '%" + txtbxSearch.Text + "%'";
+        //    dataGridView1.DataSource = bs;
+        //}
+
+
     }
 }
