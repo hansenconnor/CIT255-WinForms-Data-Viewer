@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Net;
 using System.Configuration;
+using Newtonsoft.Json;
+using System.Web;
+using Newtonsoft.Json.Linq;
 
 namespace Demo_WinForms_FlintstonesViewer
 
@@ -37,6 +40,12 @@ namespace Demo_WinForms_FlintstonesViewer
             string html = string.Empty;
             string url = _apiBaseUrl; // => https://api.medium.com/v1/me
 
+
+            //WebClient webClient = new WebClient();
+            //JObject result = JObject.Parse(webClient.DownloadString("YOUR URL"));
+            //reader = new JsonTextReader(new System.IO.StringReader(result.ToString()));
+            //reader.SupportMultipleContent = true;
+
             // Create request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             // Pass the access token 
@@ -50,12 +59,20 @@ namespace Demo_WinForms_FlintstonesViewer
                 html = reader.ReadToEnd();
             }
             Console.WriteLine(html);
+            var userId = Convert.ToInt32(JObject.Parse(html)["data"]["id"]);
 
+            MediumUser mediumUser = new MediumUser()
+            {
+                Id = userId,
+                name = result.name,
+                username = result.username,
+               profileImageUrl = result.profileImageUrl,
+                profileUrl = result.profileUrl
+            };
 
-            // Parse the JSON and map attributes to a MediumUser object
+            mediumUser.Id = result.id;
 
-            MediumUser mediumUser = new MediumUser();
-
+            Console.WriteLine(result);
             // we are going to return a list even though we are only querying one user.. But the user has multiple publications to list
 
             // TODO: Add JSON deserializer here => GET request returns a JSON object which needs to be parsed
