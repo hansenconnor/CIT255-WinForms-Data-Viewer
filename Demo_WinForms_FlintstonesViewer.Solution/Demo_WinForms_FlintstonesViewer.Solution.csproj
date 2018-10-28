@@ -66,6 +66,7 @@
       <DependentUpon>ListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\MediumPublication.cs" />
     <Compile Include="Models\MediumUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

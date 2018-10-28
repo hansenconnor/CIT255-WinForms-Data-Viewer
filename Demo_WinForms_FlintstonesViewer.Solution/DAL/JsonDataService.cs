@@ -88,9 +88,27 @@ namespace Demo_WinForms_FlintstonesViewer
             {
                 html = reader.ReadToEnd();
             }
-            Console.WriteLine(html);
-            Console.WriteLine(mediumUser.Id);
 
+            var publications = JObject.Parse(html);
+
+            // Create a list to store the publications
+            List<MediumPublication> MediumPublications = new List<MediumPublication>();
+
+            foreach (var publication in publications["data"])
+            {
+                MediumPublication mediumPublication = new MediumPublication()
+                {
+                    Id = (string)publication.SelectToken("id"),
+                    name = (string)publication.SelectToken("name"),
+                    description = (string)publication.SelectToken("description"),
+                    url = (string)publication.SelectToken("url"),
+                    imageUrl = (string)publication.SelectToken("imageUrl"),
+                };
+                MediumPublications.Add(mediumPublication);
+            };
+
+
+            Console.WriteLine(MediumPublications);
 
 
 
