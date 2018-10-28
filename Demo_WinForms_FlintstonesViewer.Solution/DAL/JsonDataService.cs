@@ -50,14 +50,23 @@ namespace Demo_WinForms_FlintstonesViewer
                 html = reader.ReadToEnd();
             }
             Console.WriteLine(html);
+
+
+            // Parse the JSON and map attributes to a MediumUser object
+
+            MediumUser mediumUser = new MediumUser();
+
+            // we are going to return a list even though we are only querying one user.. But the user has multiple publications to list
+
             // TODO: Add JSON deserializer here => GET request returns a JSON object which needs to be parsed
 
             // TODO: Wrap the GET request inside of try catch
 
             // TODO: Parse JSON and return list of Users or Publications
 
+            // List the users current publications => https://api.medium.com/v1/users/{{userId}}/publications
+            // The User Id is retrieved from the get user request made previously...
 
-            
             //try
             //{
             //    StreamReader reader = new StreamReader(_dataFilePath);
