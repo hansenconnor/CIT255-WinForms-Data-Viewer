@@ -40,7 +40,7 @@
             // picBox_Photo
             // 
             this.picBox_Photo.Location = new System.Drawing.Point(16, 50);
-            this.picBox_Photo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picBox_Photo.Margin = new System.Windows.Forms.Padding(2);
             this.picBox_Photo.Name = "picBox_Photo";
             this.picBox_Photo.Size = new System.Drawing.Size(103, 89);
             this.picBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -90,7 +90,7 @@
             // btn_Close
             // 
             this.btn_Close.Location = new System.Drawing.Point(118, 258);
-            this.btn_Close.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Close.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(56, 23);
             this.btn_Close.TabIndex = 8;
@@ -109,8 +109,9 @@
             this.Controls.Add(this.lbl_Age);
             this.Controls.Add(this.lbl_FullName);
             this.Controls.Add(this.picBox_Photo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailForm";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.DetailForm_Load);

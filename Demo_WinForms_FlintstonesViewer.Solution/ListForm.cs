@@ -22,34 +22,12 @@ namespace Demo_WinForms_FlintstonesViewer
         }
 
 
-        // NOTE: This method is not used => replaced by APICallAndBindToDataGrid();
-        //private void ReadXmlFileAndBindToDataGrid()
-        //{
 
-        //    string dataFilePath = AppConfig.dataFilePath; // TODO: Replace this with my client ID and Token
-
-        //    //
-        //    // read data file
-        //    //
-        //    // IDataService dataService = new XmlDataService(dataFilePath); // TODO: Use Json service here 
-        //    // _characters = dataService.ReadAll(); // Update data bindings to correctly map the character class
-        //                                         // Also, can modify ReadAll to accept an object type
-        //                                         // to conditionally handle field mapping.
-
-        //    //
-        //    // bind list to DataGridView control asdf
-        //    //
-        //    var bindingList = new BindingList<Character>(_characters);
-        //    var source = new BindingSource(bindingList, null);
-        //    dataGridView_Characters.DataSource = source;
-
-        //    //
-        //    // configure DataGridView control
-        //    //
-        //    this.dataGridView_Characters.Columns["Id"].Visible = false;
-        //    this.dataGridView_Characters.Columns["ImageFileName"].Visible = false;
-        //    this.dataGridView_Characters.Columns["Description"].Visible = false;
-        //}
+        // Called on form load => IS ENTRY POINT
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            APICallAndBindToDataGrid();
+        }
 
 
 
@@ -89,43 +67,20 @@ namespace Demo_WinForms_FlintstonesViewer
             //
             // configure DataGridView control
             //
-            this.dataGridView_Characters.Columns["Id"].Visible = false;
-            this.dataGridView_Characters.Columns["name"].Visible = false;
+            this.dataGridView_Characters.Columns["Id"].Visible = true;
+            this.dataGridView_Characters.Columns["name"].Visible = true;
             this.dataGridView_Characters.Columns["description"].Visible = false;
+            this.dataGridView_Characters.Columns["url"].Visible = false;
+            this.dataGridView_Characters.Columns["imageUrl"].Visible = false;
             //this.dataGridView_Characters.Columns["url"].Visible = false;
             //this.dataGridView_Characters.Columns["imageUrl"].Visible = false;
         }
 
 
-        // Called on form load => IS ENTRY POINT
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                // This is where my API call will go...
-                // APICallAndBindToDataGrid();
 
-                // ReadXmlFileAndBindToDataGrid(); => Legacy
-                APICallAndBindToDataGrid();
-            }
-            catch (FileNotFoundException)
-            {
-
-                MessageBox.Show("Unable to locate data file.\nExiting the application.");
-                this.Close();
-            }
-
-        }
-
-        private void btn_CheckList_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in dataGridView_Characters.SelectedRows)
-            {
-                dataGridView_Characters.Rows.RemoveAt(row.Index);
-            }
-        }
-
-
+        //
+        // Display publication details on click
+        //
         private void btn_DetailView_Click(object sender, EventArgs e)
         {
             if (dataGridView_Characters.SelectedRows.Count == 1)
@@ -137,6 +92,99 @@ namespace Demo_WinForms_FlintstonesViewer
                 detailForm.ShowDialog();
             }
         }
+
+        //
+        // Handle list filtering on button click
+        //
+        private void buttonFilterName_Click(object sender, EventArgs e)
+        {
+            // Filter is static => should be dynamic in future version.
+            var filteredList = _mediumUsers.Where(p => p.name == "NMC CIT 255").ToList();
+            dataGridView_Characters.DataSource = filteredList;
+        }
+
+        //
+        // Handle list sorting on button click
+        //
+        private void buttonSortByName_Click(object sender, EventArgs e)
+        {
+            // Sort is static => Users should choose which parameter they wish to sort on
+            var sortedList = _mediumUsers.OrderBy(p => p.name).ToList();
+            dataGridView_Characters.DataSource = sortedList;
+        }
+
+        //
+        // Handle search on button click
+        //
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            // Get the search query
+            var searchQuery = textBoxSearch.Text;
+            
+            // Check if empty
+            if (string.IsNullOrWhiteSpace(searchQuery))
+            {
+                MessageBox.Show("Please enter a valid query...");
+                return;
+            }
+
+            // 
+            var searchedList = _mediumUsers.Where(p => p.name.ToUpper().Contains(searchQuery.ToUpper())).ToList();
+            dataGridView_Characters.DataSource = searchedList;
+        }
+
+
+        //
+        // Display help dialog
+        //
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            Form helpForm = new HelpForm();
+            helpForm.ShowDialog();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void btn_CheckList_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView_Characters.SelectedRows)
+            {
+                dataGridView_Characters.Rows.RemoveAt(row.Index);
+            }
+        }
+
+
+
+
 
         //private void btn_DetailView_Click(object sender, EventArgs e)
         //{
@@ -241,34 +289,7 @@ namespace Demo_WinForms_FlintstonesViewer
         }
 
 
-        //
-        // Handle list filtering on button click
-        //
-        private void buttonFilterName_Click(object sender, EventArgs e)
-        {
-            var filteredList = _mediumUsers.Where(p => p.name == "NMC CIT 255").ToList();
-            dataGridView_Characters.DataSource = filteredList;
-        }
-
-        //
-        // Handle list sorting on button click
-        //
-        private void buttonSortByName_Click(object sender, EventArgs e)
-        {
-            var sortedList = _mediumUsers.OrderBy(p => p.name).ToList();
-            dataGridView_Characters.DataSource = sortedList;
-        }
-
-        //
-        // Handle search on button click
-        //
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            var searchQuery = textBoxSearch.Text;
-
-            var searchedList = _mediumUsers.Where(p => p.name.ToUpper().Contains(searchQuery.ToUpper())).ToList();
-            dataGridView_Characters.DataSource = searchedList;
-        }
+        
 
 
 

@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.dataGridView_Characters = new System.Windows.Forms.DataGridView();
-            this.btn_DeleteSelected = new System.Windows.Forms.Button();
             this.btn_DetailView = new System.Windows.Forms.Button();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Button();
-            this.btn_DemoSortFilterSearch = new System.Windows.Forms.Button();
             this.buttonFilterName = new System.Windows.Forms.Button();
             this.buttonSortByName = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonHelp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Characters)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,23 +47,12 @@
             this.dataGridView_Characters.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView_Characters.Name = "dataGridView_Characters";
             this.dataGridView_Characters.RowTemplate.Height = 24;
-            this.dataGridView_Characters.Size = new System.Drawing.Size(464, 186);
+            this.dataGridView_Characters.Size = new System.Drawing.Size(651, 186);
             this.dataGridView_Characters.TabIndex = 0;
-            // 
-            // btn_DeleteSelected
-            // 
-            this.btn_DeleteSelected.Location = new System.Drawing.Point(66, 343);
-            this.btn_DeleteSelected.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_DeleteSelected.Name = "btn_DeleteSelected";
-            this.btn_DeleteSelected.Size = new System.Drawing.Size(85, 37);
-            this.btn_DeleteSelected.TabIndex = 1;
-            this.btn_DeleteSelected.Text = "Delete Selected";
-            this.btn_DeleteSelected.UseVisualStyleBackColor = true;
-            this.btn_DeleteSelected.Click += new System.EventHandler(this.btn_CheckList_Click);
             // 
             // btn_DetailView
             // 
-            this.btn_DetailView.Location = new System.Drawing.Point(173, 341);
+            this.btn_DetailView.Location = new System.Drawing.Point(66, 342);
             this.btn_DetailView.Margin = new System.Windows.Forms.Padding(2);
             this.btn_DetailView.Name = "btn_DetailView";
             this.btn_DetailView.Size = new System.Drawing.Size(81, 39);
@@ -86,7 +74,7 @@
             // 
             // btn_exit
             // 
-            this.btn_exit.Location = new System.Drawing.Point(449, 342);
+            this.btn_exit.Location = new System.Drawing.Point(636, 342);
             this.btn_exit.Margin = new System.Windows.Forms.Padding(2);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(81, 39);
@@ -94,17 +82,6 @@
             this.btn_exit.Text = "Exit";
             this.btn_exit.UseVisualStyleBackColor = true;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
-            // 
-            // btn_DemoSortFilterSearch
-            // 
-            this.btn_DemoSortFilterSearch.Location = new System.Drawing.Point(276, 340);
-            this.btn_DemoSortFilterSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_DemoSortFilterSearch.Name = "btn_DemoSortFilterSearch";
-            this.btn_DemoSortFilterSearch.Size = new System.Drawing.Size(81, 39);
-            this.btn_DemoSortFilterSearch.TabIndex = 5;
-            this.btn_DemoSortFilterSearch.Text = "Demo Sort, Filter, Search";
-            this.btn_DemoSortFilterSearch.UseVisualStyleBackColor = true;
-            this.btn_DemoSortFilterSearch.Click += new System.EventHandler(this.btn_DemoSortFilterSearch_Click);
             // 
             // buttonFilterName
             // 
@@ -128,7 +105,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(454, 86);
+            this.buttonSearch.Location = new System.Drawing.Point(465, 86);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonSearch.TabIndex = 8;
@@ -138,28 +115,38 @@
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(276, 88);
+            this.textBoxSearch.Location = new System.Drawing.Point(287, 88);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(172, 20);
             this.textBoxSearch.TabIndex = 9;
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.Location = new System.Drawing.Point(550, 342);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(81, 39);
+            this.buttonHelp.TabIndex = 10;
+            this.buttonHelp.Text = "Help";
+            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // ListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 439);
+            this.Controls.Add(this.buttonHelp);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonSortByName);
             this.Controls.Add(this.buttonFilterName);
-            this.Controls.Add(this.btn_DemoSortFilterSearch);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.lbl_Title);
             this.Controls.Add(this.btn_DetailView);
-            this.Controls.Add(this.btn_DeleteSelected);
             this.Controls.Add(this.dataGridView_Characters);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ListForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Publications";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Characters)).EndInit();
@@ -171,15 +158,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView_Characters;
-        private System.Windows.Forms.Button btn_DeleteSelected;
         private System.Windows.Forms.Button btn_DetailView;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.Button btn_exit;
-        private System.Windows.Forms.Button btn_DemoSortFilterSearch;
         private System.Windows.Forms.Button buttonFilterName;
         private System.Windows.Forms.Button buttonSortByName;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonHelp;
     }
 }
 
